@@ -1,0 +1,42 @@
+.tabs {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__list-item {
+    padding: 1rem;
+
+    &--active {
+      color: rgb(0, 0, 180);
+      border-bottom: 1px solid rgb(230, 230, 230)
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    overflow: hidden;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    max-height: 100px;
+
+    &--active {
+      opacity: 1;
+      position: static;
+    }
+
+    a {
+      color: rgb(0, 0, 180);
+      text-decoration: none;
+    }
+  }
+
+  &__panel-container {
+    border: 2px solid black;
+    padding: 2rem;
+  }
+}
