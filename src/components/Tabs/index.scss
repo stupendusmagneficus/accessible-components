@@ -2,17 +2,21 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   &__list-item {
+    font-size: 2rem;
     padding: 1rem;
+    cursor: pointer;
 
     &--active {
       color: rgb(0, 0, 180);
-      border-bottom: 1px solid rgb(230, 230, 230)
+      border-bottom: 2px solid black;
     }
   }
 
@@ -22,7 +26,7 @@
     left: -9999px;
     top: -9999px;
     opacity: 0;
-    max-height: 100px;
+    height: auto;
 
     &--active {
       opacity: 1;
