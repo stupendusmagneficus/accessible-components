@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export default function Tabs() {
   const data = [
@@ -26,7 +26,7 @@ export default function Tabs() {
   const isPanelActive = (id) => id === activePanelId
 
   const handleKeyDown = (e) => {
-    switch (e.key) {
+    switch (e.code) {
       case 'ArrowRight':
         e.preventDefault()
         changeFocusToItem(e.currentTarget, 'next')
@@ -48,11 +48,7 @@ export default function Tabs() {
         break
 
       case 'Enter':
-        handleTablistClick(e.target.dataset.tabpanelId)
-        break
-
       case 'Space':
-        e.preventDefault()
         handleTablistClick(e.target.dataset.tabpanelId)
         break
 
@@ -63,10 +59,17 @@ export default function Tabs() {
 
   const changeFocusToItem = (target, item) => {
     const items = document.querySelectorAll('[role="tab"]')
+    const innerItems = document.querySelectorAll('a')
 
     let index = [...target.children].indexOf(
-      document.activeElement.closest('[role="tab"]'),
+      document.activeElement.closest('[role="presentation"]'),
     )
+
+    innerItems.forEach((el) => {
+      return el.parentElement.classList.contains('tabs__panel--active')
+        ? el.setAttribute('tabIndex', -1)
+        : el.setAttribute('tabIndex', 0)
+    })
 
     if (item === 'last') {
       index = items.length - 1
@@ -82,24 +85,24 @@ export default function Tabs() {
   }
 
   return (
-    <div className="tabs" onKeyDown={handleKeyDown}>
-      <ul className="tabs__list" role="tablist">
-        {data.map(({ id, title }, idx) => (
-          <li
-            aria-selected={isPanelActive(id)}
-            aria-controls={`tabpanel-${idx}`}
-            data-tabpanel-id={id}
-            key={id}
-            id={`tab-${idx}`}
-            onClick={() => handleTablistClick(id)}
-            role="tab"
-            tabIndex={isPanelActive(id) ? 0 : -1}
-            className={`
+    <div className="tabs">
+      <ul className="tabs__list" role="tablist" onKeyDown={handleKeyDown}>
+        {data.map(({ id, title, index }, idx) => (
+          <li key={id} role="presentation">
+            <button
+              aria-selected={isPanelActive(id)}
+              aria-controls={`tabpanel-${idx}`}
+              id={`tab-${idx}`}
+              onClick={() => handleTablistClick(id)}
+              role="tab"
+              tabIndex={isPanelActive(id) ? 0 : -1}
+              className={`
               tabs__list-item   
               ${isPanelActive(id) ? 'tabs__list-item--active' : ''}
             `}
-          >
-            {title}
+            >
+              {title}
+            </button>
           </li>
         ))}
       </ul>

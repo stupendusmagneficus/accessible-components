@@ -13,6 +13,8 @@
     font-size: 2rem;
     padding: 1rem;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 
     &--active {
       color: rgb(0, 0, 180);
@@ -37,6 +39,8 @@
       color: rgb(0, 0, 180);
       text-decoration: none;
     }
+
+
   }
 
   &__panel-container {
