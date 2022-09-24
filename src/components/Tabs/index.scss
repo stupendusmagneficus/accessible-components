@@ -1,4 +1,5 @@
 .tabs {
+  margin-top: 100px;
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +19,12 @@
 
     &--active {
       color: rgb(0, 0, 180);
-      border-bottom: 2px solid black;
+      border-bottom: 3px solid black;
+    }
+
+    &:focus {
+      outline: 4px solid black;
+      outline-offset: 4px;
     }
   }
 

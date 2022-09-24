@@ -65,11 +65,11 @@ export default function Tabs() {
       document.activeElement.closest('[role="presentation"]'),
     )
 
-    innerItems.forEach((el) => {
-      return el.parentElement.classList.contains('tabs__panel--active')
-        ? el.setAttribute('tabIndex', -1)
-        : el.setAttribute('tabIndex', 0)
-    })
+    innerItems.forEach((el) =>
+      el.parentElement.classList.contains('tabs__panel--active')
+        ? el.setAttribute('tabIndex', '-1')
+        : el.setAttribute('tabIndex', '0'),
+    )
 
     if (item === 'last') {
       index = items.length - 1
