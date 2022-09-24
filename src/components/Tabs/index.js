@@ -62,10 +62,10 @@ export default function Tabs() {
   }
 
   const changeFocusToItem = (target, item) => {
-    const items = Array.from(target.querySelectorAll('.tabs__list-item'))
+    const items = document.querySelectorAll('[role="tab"]')
 
     let index = [...target.children].indexOf(
-      document.activeElement.closest('.tabs__list'),
+      document.activeElement.closest('[role="tab"]'),
     )
 
     if (item === 'last') {
@@ -121,6 +121,7 @@ export default function Tabs() {
             aria-labelledby={`tab-${idx}`}
             key={id}
             id={`tabpanel-${idx}`}
+            tabIndex={isPanelActive(id) ? 0 : -1}
             className={`
               tabs__panel
               ${isPanelActive(id) ? 'tabs__panel--active' : ''}
