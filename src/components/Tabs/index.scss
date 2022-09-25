@@ -1,5 +1,9 @@
 .tabs {
-  margin-top: 100px;
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +11,7 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 35px 0;
   }
 
   &__list-item {
@@ -19,7 +23,7 @@
 
     &--active {
       color: rgb(0, 0, 180);
-      border-bottom: 3px solid black;
+      border-bottom: 5px solid black;
     }
 
     &:focus {
@@ -29,21 +33,27 @@
   }
 
   &__panel {
+    display: none;
     position: absolute;
-    overflow: hidden;
     left: -9999px;
     top: -9999px;
     opacity: 0;
     height: auto;
 
     &--active {
+      display: block;
       opacity: 1;
       position: static;
     }
 
     a {
       color: rgb(0, 0, 180);
-      text-decoration: none;
+
+      &:focus,
+      &:hover {
+        outline: 4px solid black;
+        outline-offset: 4px;
+      }
     }
   }
 

@@ -59,16 +59,9 @@ export default function Tabs() {
 
   const changeFocusToItem = (target, item) => {
     const items = document.querySelectorAll('[role="tab"]')
-    const innerItems = document.querySelectorAll('a')
 
     let index = [...target.children].indexOf(
       document.activeElement.closest('[role="presentation"]'),
-    )
-
-    innerItems.forEach((el) =>
-      el.parentElement.classList.contains('tabs__panel--active')
-        ? el.setAttribute('tabIndex', '-1')
-        : el.setAttribute('tabIndex', '0'),
     )
 
     if (item === 'last') {
@@ -86,7 +79,13 @@ export default function Tabs() {
 
   return (
     <div className="tabs">
-      <ul className="tabs__list" role="tablist" onKeyDown={handleKeyDown}>
+      <h2 id="tablist-1">Modern JavaScript Frameworks</h2>
+      <ul
+        aria-labelledby="tablist-1"
+        className="tabs__list"
+        role="tablist"
+        onKeyDown={handleKeyDown}
+      >
         {data.map(({ id, title, index }, idx) => (
           <li key={id} role="presentation">
             <button
@@ -95,6 +94,7 @@ export default function Tabs() {
               id={`tab-${idx}`}
               onClick={() => handleTablistClick(id)}
               role="tab"
+              type="button"
               tabIndex={isPanelActive(id) ? 0 : -1}
               className={`
               tabs__list-item   
@@ -124,7 +124,6 @@ export default function Tabs() {
             aria-labelledby={`tab-${idx}`}
             key={id}
             id={`tabpanel-${idx}`}
-            tabIndex={isPanelActive(id) ? 0 : -1}
             className={`
               tabs__panel
               ${isPanelActive(id) ? 'tabs__panel--active' : ''}
