@@ -28,7 +28,7 @@
     border: none;
 
     &--active {
-      color: rgb(0, 0, 180);
+      color: #1d5680;
       border-bottom: 5px solid black;
     }
 
@@ -61,12 +61,14 @@
     }
 
     a {
-      color: rgb(0, 0, 180);
+      color: #1d5680;
 
       &:focus,
       &:hover {
-        outline: 4px solid black;
-        outline-offset: 4px;
+        outline: 1px solid #6DA031;
+        outline-offset: 2px;
+        text-decoration: none;
+        background-color: #fdf6e7;
       }
     }
   }
