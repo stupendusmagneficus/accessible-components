@@ -2,6 +2,7 @@
   h2 {
     font-size: 2.5rem;
     text-align: center;
+    color: #1d5680;
   }
 
   &__list {
@@ -63,12 +64,16 @@
     a {
       color: #1d5680;
 
-      &:focus,
       &:hover {
         outline: 1px solid #6DA031;
         outline-offset: 2px;
         text-decoration: none;
         background-color: #fdf6e7;
+      }
+
+      &:focus {
+        outline: 4px solid black;
+        outline-offset: 4px;
       }
     }
   }
