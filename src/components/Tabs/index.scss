@@ -12,6 +12,12 @@
     list-style: none;
     padding: 0;
     margin: 0 0 35px 0;
+
+    li {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
   }
 
   &__list-item {
@@ -26,9 +32,17 @@
       border-bottom: 5px solid black;
     }
 
+    &:hover {
+      border-bottom: 5px solid black;
+    }
+
     &:focus {
       outline: 4px solid black;
       outline-offset: 4px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 10px;
     }
   }
 
