@@ -1,0 +1,29 @@
+
+|===
+|Issues |Reasons
+
+|Missing tabs title.
+|People which is using screen readers or any other assistive tools are not able or will be limited to get preview information about this section. Does not matter is it tabs or any other section.
+
+|Set active-tab on event, onMouseEnter.
+|On this issue I actually see the problem not only for people with disabilities but for all regular users. With any unintentional mouse movements user can lose state of the active-tab which means to lose any current progress reading information from tab-panel.
+
+|Cursor on tab-list items is not correct.
+|Cursor should be properly visible and has correct meaning. We had cursor for text inputs which cant be used for navigation by tabs.
+
+|Tab-list hover effect.
+|Tab-list hover effect should be good enough visible otherwise people with low vision, colorblind or people with good vision but for example somewhere outside with huge sunshine will not be able to see out hover effect or any other.
+
+|Tabbing elements inside tab-panel are not reflecting out active-tab.
+|In case if right now I have active-tab 2 and want to visit link inside tab-panel 2, by clicking tab I will get some other link inside some other panel. Any people who use only keyboard or any assistive devices will be disoriented.
+
+|Wrong navigation with tab and arrows.
+|We should be able to navigate inside tab-list by arrows (Right, Left), other options like (Home, End, Space, Enter) and in case of any tab elements inside tab-panel should be able to reach there exactly by tab.
+Any people who use only keyboard or assistive devices.
+
+|Missing proper hover effect for tag <a> inside tab-panel.
+|People using mouse, trackpad with low vision or colorblind will not be able to discern this element from any other or simply from regular text.
+
+|Correlation between active-tab and active tab-panel, information where user is right now.
+|Screen reader users, blind or with very low vision which is using screen reader like assistive tool will disorient if we will not provide information about current position and following options.
+|===
