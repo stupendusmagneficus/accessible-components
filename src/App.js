@@ -1,11 +1,11 @@
-import Tabs from "./components/Tabs";
+import RadioGroup from './components/Radio'
 
 function App() {
   return (
-      <div className="container">
-        <Tabs/>
-      </div>
-  );
+    <div className="container">
+      <RadioGroup />
+    </div>
+  )
 }
 
-export default App;
+export default App
