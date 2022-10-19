@@ -5,25 +5,45 @@
 
   .radio-group {
     display: flex;
-    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+
+    &__wrapper {
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+    }
 
     &__item {
-      padding-right: .2rem;
+      margin-right: .5rem;
+      width: 16px;
+      height: 16px;
 
-      &:focus {
-        outline: 1px solid rgb(46, 46, 46);
+      &:focus,
+      &:hover {
+        outline: 2px solid rgb(46, 46, 46);
       }
 
     }
 
     &__submit {
+      align-self: flex-end;
       margin-top: 1rem;
       padding: .5rem 1rem;
       color: rgb(135, 112, 112);
+      font-size: 1.25rem;
+      cursor: pointer;
 
-      &:focus {
-        outline: 1px solid rgb(46, 46, 46);
+      &:focus,
+      &:hover {
+        outline: 2px solid rgb(46, 46, 46);
+        background-color: white;
       }
     }
+  }
+
+  [role="radiogroup"] {
+    display: flex;
+    flex-direction: column;
   }
 }
