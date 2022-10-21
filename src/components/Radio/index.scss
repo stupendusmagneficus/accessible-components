@@ -30,6 +30,13 @@
 
     }
 
+    &__selected {
+      width: 100%;
+      padding: 20px;
+      border: 2px solid #5b4c4c;
+      margin-top: 30px;
+    }
+
     &__submit {
       align-self: flex-end;
       margin-top: 1rem;

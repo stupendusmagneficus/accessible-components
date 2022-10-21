@@ -2,13 +2,14 @@ import { useRef, useState } from 'react'
 
 export default function RadioGroup() {
   const options = [
-    { name: 'radio', id: 1, label: 'Email' },
-    { name: 'radio', id: 2, label: 'Phone' },
-    { name: 'radio', id: 3, label: 'Telegram' },
+    { name: 'radio', id: '1', label: 'Email' },
+    { name: 'radio', id: '2', label: 'Phone' },
+    { name: 'radio', id: '3', label: 'Telegram' },
   ]
 
   const [checkedList, setCheckedList] = useState(options)
   const [isChecked, setIsChecked] = useState(options[0].id)
+  const [showData, setShowData] = useState(false)
 
   const isRadioChecked = (id) => id === isChecked
   const handleRadioListClick = (id) => setIsChecked(id)
@@ -28,10 +29,12 @@ export default function RadioGroup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setShowData(true)
     console.log(checkedList)
   }
 
   const changeFocusToItem = (item) => {
+    setShowData(false)
     let index = options.findIndex((item) => item.id === isChecked)
 
     if (item === 'next') {
@@ -44,8 +47,9 @@ export default function RadioGroup() {
     radioRefs.current[index].focus()
   }
 
+  const selectedValue = checkedList.filter((item) => item.checked)
+
   const handleKeyDown = (e) => {
-    console.log(e)
     switch (e.key) {
       case 'ArrowLeft':
       case 'ArrowDown': {
@@ -74,18 +78,24 @@ export default function RadioGroup() {
             <h2 id="group_label">
               Please select your preferred contact method
             </h2>
-            <div className="radio-group" onKeyDown={handleKeyDown}>
+            <div
+              className="radio-group"
+              onKeyDown={handleKeyDown}
+              aria-labelledby="description"
+            >
               {checkedList.map(({ id, name, checked, label }, index) => (
                 <div key={id} className="radio-group__wrapper">
                   <input
+                    data-id={id}
                     type="radio"
                     name={name}
                     value={id}
                     id={id}
-                    aria-checked={checked}
-                    checked={isRadioChecked(id)}
+                    aria-checked={isRadioChecked(id)}
+                    checked={checked}
                     onChange={(e) => changeList(id, e.target.checked)}
                     onFocus={() => handleRadioListClick(id)}
+                    onClick={(e) => changeList(id, e.target.checked)}
                     className="radio-group__item"
                     tabIndex={isRadioChecked(id) ? 0 : -1}
                     ref={(element) => {
@@ -98,12 +108,22 @@ export default function RadioGroup() {
                 </div>
               ))}
             </div>
-            <button type="submit" className="radio-group__submit">
-              Submit
-            </button>
+            <div>
+              <button type="submit" className="radio-group__submit">
+                Submit
+              </button>
+            </div>
+            {showData && (
+              <p className="radio-group__selected">
+                Your selected option is - {selectedValue[0].label}
+              </p>
+            )}
           </div>
         </form>
       </section>
+      <p id="description" className="radio-group__description">
+        In case of using keyboard put "Space" to select value.
+      </p>
     </main>
   )
 }
