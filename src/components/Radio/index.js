@@ -82,10 +82,9 @@ export default function RadioGroup() {
                     name={name}
                     value={id}
                     id={id}
-                    aria-checked={isRadioChecked(id)}
+                    aria-checked={checked}
                     checked={isRadioChecked(id)}
                     onChange={(e) => changeList(id, e.target.checked)}
-                    onClick={() => handleRadioListClick(id)}
                     onFocus={() => handleRadioListClick(id)}
                     className="radio-group__item"
                     tabIndex={isRadioChecked(id) ? 0 : -1}

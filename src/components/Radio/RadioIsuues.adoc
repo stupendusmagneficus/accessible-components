@@ -2,7 +2,16 @@
 |===
 |Issues |Reasons
 
-|
-|
+|Contrast ratio for all form and submit button not according wcag.
+|Will impact people with low vision, colorblind.
+
+|Navigation with keyboard is wrong. Tabindex should be positive only for selected input, the rest of inputs should have -1 tabindex. Between radio group need to be navigated with arrows.
+|Will impact keyboard users.
+
+|Missing role attributes(ex radio, radio-group).
+|People who using screen readers will not be able to understand and navigate correctly through our component.
+
+|Submit button with wrong type.
+|Screen reader users will lose information where form should be submitted.
 
 |===

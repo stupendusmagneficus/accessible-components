@@ -12,6 +12,11 @@
       &:not(:last-child) {
         margin-right: 1em;
       }
+
+      &:focus,
+      &:hover {
+        outline: 2px solid #5b4c4c;
+      }
     }
 
     &__item {
@@ -19,8 +24,7 @@
       width: 16px;
       height: 16px;
 
-      &:focus,
-      &:hover {
+      &:focus {
         outline: 2px solid #5b4c4c;
       }
 
