@@ -1,7 +1,7 @@
 .radios {
-  background-color: rgb(237, 237, 237);
   padding: 1rem;
-  color: rgb(114, 92, 92);
+  color: #5b4c4c;
+  border: 2px solid #5b4c4c;
 
   .radio-group {
     display: flex;
@@ -21,7 +21,7 @@
 
       &:focus,
       &:hover {
-        outline: 2px solid rgb(46, 46, 46);
+        outline: 2px solid #5b4c4c;
       }
 
     }
@@ -30,13 +30,13 @@
       align-self: flex-end;
       margin-top: 1rem;
       padding: .5rem 1rem;
-      color: rgb(135, 112, 112);
+      color: #5b4c4c;
       font-size: 1.25rem;
       cursor: pointer;
 
       &:focus,
       &:hover {
-        outline: 2px solid rgb(46, 46, 46);
+        outline: 2px solid #5b4c4c;
         background-color: white;
       }
     }
@@ -46,4 +46,8 @@
     display: flex;
     flex-direction: column;
   }
+}
+
+.heading {
+  color: #5b4c4c;
 }

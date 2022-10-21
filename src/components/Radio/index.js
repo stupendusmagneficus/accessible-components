@@ -2,9 +2,9 @@ import { useRef, useState } from 'react'
 
 export default function RadioGroup() {
   const options = [
-    { name: 'email', id: 1, label: 'Email' },
-    { name: 'phone', id: 2, label: 'Phone' },
-    { name: 'telegram', id: 3, label: 'Telegram' },
+    { name: 'radio', id: 1, label: 'Email' },
+    { name: 'radio', id: 2, label: 'Phone' },
+    { name: 'radio', id: 3, label: 'Telegram' },
   ]
 
   const [checkedList, setCheckedList] = useState(options)
@@ -66,42 +66,45 @@ export default function RadioGroup() {
   }
 
   return (
-    <section className="radios">
-      <div role="radiogroup" aria-labelledby="group_label">
-        <h2 id="group_label">Please select your preferred contact method</h2>
-        <div className="radio-group" onKeyDown={handleKeyDown}>
-          {checkedList.map(({ id, name, checked, label }, index) => (
-            <div key={id} className="radio-group__wrapper">
-              <input
-                type="radio"
-                name={name}
-                value={id}
-                id={id}
-                checked={checked}
-                onChange={(e) => changeList(id, e.target.checked)}
-                onClick={() => handleRadioListClick(id)}
-                onFocus={() => handleRadioListClick(id)}
-                className="radio-group__item"
-                tabIndex={isRadioChecked(id) ? 0 : -1}
-                ref={(element) => {
-                  radioRefs.current[index] = element
-                }}
-              />
-              <label className="radio-group__label" htmlFor={id}>
-                {label}
-              </label>
+    <main>
+      <h1 className="heading">Accessible radio group</h1>
+      <section className="radios">
+        <form onSubmit={handleSubmit}>
+          <div role="radiogroup" aria-labelledby="group_label">
+            <h2 id="group_label">
+              Please select your preferred contact method
+            </h2>
+            <div className="radio-group" onKeyDown={handleKeyDown}>
+              {checkedList.map(({ id, name, checked, label }, index) => (
+                <div key={id} className="radio-group__wrapper">
+                  <input
+                    type="radio"
+                    name={name}
+                    value={id}
+                    id={id}
+                    aria-checked={isRadioChecked(id)}
+                    checked={isRadioChecked(id)}
+                    onChange={(e) => changeList(id, e.target.checked)}
+                    onClick={() => handleRadioListClick(id)}
+                    onFocus={() => handleRadioListClick(id)}
+                    className="radio-group__item"
+                    tabIndex={isRadioChecked(id) ? 0 : -1}
+                    ref={(element) => {
+                      radioRefs.current[index] = element
+                    }}
+                  />
+                  <label className="radio-group__label" htmlFor={id}>
+                    {label}
+                  </label>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="radio-group__submit"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </div>
-    </section>
+            <button type="submit" className="radio-group__submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
   )
 }
