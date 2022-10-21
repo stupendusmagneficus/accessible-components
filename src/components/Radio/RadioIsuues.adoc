@@ -14,4 +14,7 @@
 |Submit button with wrong type.
 |Screen reader users will lose information where form should be submitted.
 
+|No visible result of selected value.
+|Each person expect some output after submitting form. We have to provide this information to people.
+
 |===

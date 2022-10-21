@@ -113,9 +113,9 @@ export default function RadioGroup() {
                 Submit
               </button>
             </div>
-            {showData && (
+            {showData && selectedValue.length !== 0 && (
               <p className="radio-group__selected">
-                Your selected option is - {selectedValue[0].label}
+                Your selected option is - {selectedValue[0]?.label}
               </p>
             )}
           </div>
